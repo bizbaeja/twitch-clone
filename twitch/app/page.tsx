@@ -1,7 +1,7 @@
-import Image from 'next/image'
 
-export default function Home() {
+
+export default function Page() {
   return (
-   <p className='text-red-500 font-bold'>Hello Twitch clone </p>
+   <p>오직 인증된 유저만 이 페이지를 볼 수 있습니다</p>
   )
 }
