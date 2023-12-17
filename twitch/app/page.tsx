@@ -1,7 +1,13 @@
-
+import { UserButton } from "@clerk/nextjs"
 
 export default function Page() {
   return (
-   <p>오직 인증된 유저만 이 페이지를 볼 수 있습니다</p>
+    <div className="flex flex-col gap-y-4">
+      <h1>Dashboard</h1>
+      <UserButton 
+      afterSignOutUrl="/"
+      />
+    </div>
+ 
   )
 }
