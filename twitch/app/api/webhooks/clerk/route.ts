@@ -1,6 +1,7 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
+import { db } from "@/lib/db"
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
@@ -42,12 +43,21 @@ export async function POST(req: Request) {
       status: 400
     })
   }
-   // Get the ID and type
-   const { id } = evt.data;
-
+  const eventType = evt.type;
+  
+  if(eventType === "user.created") {
+    await db.user.create({
+      data:{
+        externalIserId : payload.data.id,
+        username : payload.data.username,
+        imageUrl : payload.data.image_url,
+        
+      }
+    })
+  }
 
    return new Response('', { status: 200 })
- 
+
 }
 
 
