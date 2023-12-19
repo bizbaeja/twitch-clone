@@ -48,7 +48,7 @@ export async function POST(req: Request) {
   if(eventType === "user.created") {
     await db.user.create({
       data:{
-        externalIserId : payload.data.id,
+        externalUserId : payload.data.id,
         username : payload.data.username,
         imageUrl : payload.data.image_url,
         
