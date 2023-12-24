@@ -3,6 +3,8 @@ import { getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
 import { Actions } from "./_components/actions";
 
+
+
 interface UserPageProps {
     params: {
         username: string;
@@ -30,7 +32,7 @@ const UserPage = async ({
             아이디 : {user.id}
             </p>  
             <p>팔로잉 : {`${isFollowing}`}</p>
-            <Actions />
+            <Actions isFollowing={isFollowing} />
         </div>
     );
 };

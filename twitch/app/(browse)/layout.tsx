@@ -3,6 +3,8 @@ import { NavBar } from "./_components/navbar";
 import { Sidebar, SidebarSkeleton } from "./_components/sidebar";
 import { Container } from "./_components/container";
 import { Suspense } from "react";
+
+
 const BrowseLayout = ({
     children,
   }: {
