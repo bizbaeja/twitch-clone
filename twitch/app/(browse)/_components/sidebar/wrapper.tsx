@@ -2,8 +2,7 @@
 import { useSidebar } from "@/store/use-sidebar"
 import { useIsClient } from "usehooks-ts"
 import { cn } from "@/lib/utils"
-import { useEffect, useState } from "react"
-import { Toggle, ToggleSkeleton } from "./toggle"
+import { ToggleSkeleton } from "./toggle"
 import { RecommendedSkeleton } from "./user-item"
 
 interface WrapperProps {

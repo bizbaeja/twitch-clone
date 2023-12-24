@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeftFromLine ,ArrowRightFromLine} from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-
 export const Toggle = () => {
      const {
         collapsed,
