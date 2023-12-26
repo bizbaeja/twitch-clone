@@ -1,6 +1,7 @@
 "use server";
 
-import { followUser } from "@/lib/follow-service";
+import {   followUser, 
+    unfollowUser } from "@/lib/follow-service";
 import { revalidatePath } from "next/cache";
 
 export const onFollow = async (id: string) => {
@@ -20,3 +21,19 @@ export const onFollow = async (id: string) => {
         throw new Error("팔로우에 실패했습니다.")
     }
 };
+
+export const onUnfollow = async (id: string) => {
+    try{
+        const unfollowedUser = await unfollowUser(id);
+
+        revalidatePath("/");
+    
+        if (unfollowedUser) {
+          revalidatePath(`/${unfollowedUser.following.username}`)
+        }
+    
+        return unfollowedUser;
+      } catch (error) {
+        throw new Error("언팔로우에 실패했습니다.");
+      }
+}
