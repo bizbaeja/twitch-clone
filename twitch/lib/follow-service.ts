@@ -1,6 +1,25 @@
 import { db }   from "@/lib/db";
 import { getSelf } from "./auth-service";
 
+export const getFollowedUsers = async () => {
+    try{
+        const self = await getSelf();
+
+        const followedUsers = db.follow.findMany({
+            where: {
+                followerId: self.id,
+            },
+            include:{
+                following: true,
+            }
+        })
+        return followedUsers;
+    }
+    catch{
+        return [];
+    }
+};
+
 // 팔로우이면 true를 반환하고, 아니면 false를 반환합니다.
 
 export const isFollowingUser = async (id: string) => {
@@ -133,7 +152,7 @@ export const unfollowUser = async (id: string) => {
   
 
     // 팔로우를 삭제합니다.
-    
+
     const follow = await db.follow.delete({
       where: {
         id: existingFollow.id,
@@ -143,5 +162,7 @@ export const unfollowUser = async (id: string) => {
       },
     });
   
+    // 팔로우 정보를 반환합니다.
+
     return follow;
   };

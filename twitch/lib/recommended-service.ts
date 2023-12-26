@@ -23,6 +23,21 @@ export const getRecommended = async () => {
                 createdAt: "desc"
             },
             where:{
+                AND:[
+                    { NOT:{
+                        id: userId,
+                         }
+                     },
+                    {
+                      NOT:{
+                        followedBy:{
+                            some:{
+                                followerId: userId,
+                            }
+                        }
+                      }
+                    }
+                ],
                 NOT:{
                     id: userId,
                 }
