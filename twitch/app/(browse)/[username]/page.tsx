@@ -32,7 +32,7 @@ const UserPage = async ({
             아이디 : {user.id}
             </p>  
             <p>팔로잉 : {`${isFollowing}`}</p>
-            <Actions isFollowing={isFollowing} />
+            <Actions userId={user.id} isFollowing={isFollowing} />
         </div>
     );
 };
