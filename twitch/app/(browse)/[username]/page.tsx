@@ -24,7 +24,12 @@ const UserPage = async ({
     }
 
     const isFollowing = await isFollowingUser(user.id)
-    
+    const isBlocked = await isBlockedByUser(user.id)
+
+    if(!isBlocked){
+        notFound();
+    }
+
     return (
         <div className="flex flex-col gap-y-4">
             <p>
@@ -34,6 +39,9 @@ const UserPage = async ({
             아이디 : {user.id}
             </p>  
             <p>팔로잉 : {`${isFollowing}`}</p>
+            <p>
+                {`${isBlocked}님에게 차단 당하셨습니다.`} 
+            </p>
             <Actions userId={user.id} isFollowing={isFollowing} />
         </div>
     );

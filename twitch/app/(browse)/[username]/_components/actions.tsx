@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 // 고로, data 는 follow-service.ts 에서 정의된다.
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { toast } from "sonner"
-import { onBlock } from "@/actions/block";
+import { onUnBlock ,onBlock} from "@/actions/block";
 interface ActionsProps {
     isFollowing: boolean;
     userId : string;
@@ -47,7 +47,7 @@ export const Actions = ({
       const handleBlock = () => {
         startTransition(()=>{
             onBlock(userId)
-            .then((data)=>toast.success(`${data.blocked.username}님을 차단했습니다`))
+            .then((data)=>toast.success(`${data.blocked.username}님을 차단해제했습니다.`))
             .catch(()=>toast.error("오류가 발생했습니다"))
         })
       }
