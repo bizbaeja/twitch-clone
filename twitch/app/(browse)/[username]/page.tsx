@@ -1,49 +1,31 @@
-import { isFollowingUser } from "@/lib/follow-service";
-import { getUserByUsername } from "@/lib/user-service";
-import { notFound } from "next/navigation";
-import { Actions } from "./_components/actions";
-import { isBlockedByUser } from "@/lib/block-service";
-
-
+import { isFollowingUser } from '@/lib/follow-service';
+import { getUserByUsername } from '@/lib/user-service';
+import { notFound } from 'next/navigation';
+import { Actions } from './_components/actions';
 
 interface UserPageProps {
-    params: {
-        username: string;
-    }
+	params: {
+		username: string;
+	};
 }
 
-const UserPage = async ({
-    params
-}: UserPageProps) => {
+const UserPage = async ({ params }: UserPageProps) => {
+	const user = await getUserByUsername(params.username);
 
-    const user = await getUserByUsername(params.username)
-    
+	if (!user) {
+		notFound();
+	}
 
-    if(!user){
-        notFound();
-    }
+	const isFollowing = await isFollowingUser(user.id);
 
-    const isFollowing = await isFollowingUser(user.id)
-    const isBlocked = await isBlockedByUser(user.id)
-
-    if(!isBlocked){
-        notFound();
-    }
-
-    return (
-        <div className="flex flex-col gap-y-4">
-            <p>
-            이름 : {user.username}
-            </p>  
-            <p>
-            아이디 : {user.id}
-            </p>  
-            <p>팔로잉 : {`${isFollowing}`}</p>
-            <p>
-                {`${isBlocked}님에게 차단 당하셨습니다.`} 
-            </p>
-            <Actions userId={user.id} isFollowing={isFollowing} />
-        </div>
-    );
+	return (
+		<div className="flex flex-col gap-y-4">
+			<p>username: {user.username}</p>
+			<p>user ID: {user.id}</p>
+			<p>팔로잉: {`${isFollowing}`}</p>
+			<Actions isFollowing={isFollowing} userId={user.id} />
+		</div>
+	);
 };
+
 export default UserPage;

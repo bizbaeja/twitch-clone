@@ -1,6 +1,9 @@
 import { getSelfByUsername } from "@/lib/auth-service";
 import { redirect } from "next/navigation";
 import { NavBar } from "./_components/navbar";
+import { Sidebar } from "./_components/sidebar";
+import { Container } from "./_components/container";
+
 interface CreaterLayoutProps {
     params: {username: string};
     children: React.ReactNode;
@@ -22,7 +25,11 @@ CreaterLayoutProps
         <>
         <NavBar />
         <div className="flex h-full pt-20">
-            {children}
+             <Sidebar />
+             <Container>
+             {children}
+             </Container>
+            
         </div>
         </>
         
