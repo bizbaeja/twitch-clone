@@ -1,48 +1,43 @@
 import { currentUser } from "@clerk/nextjs";
 
-import { db } from "./db";
+import { db } from "@/lib/db";
 
 export const getSelf = async () => {
+  const self = await currentUser();
 
-    // 현재 사용자 가져오기
-    const self = await currentUser();
+  if (!self || !self.username) {
+    throw new Error("Unauthorized");
+  }
 
-    // 인증 확인
-    if(!self || !self.username){
-        throw new Error("Unauthorized");
-    }
+  const user = await db.user.findUnique({
+    where: { externalUserId: self.id },
+  });
 
-    // 데이터베이스에서 사용자 가져오기 
-    const user = await db.user.findUnique({
-        where: {externalUserId : self.id}
-    });
+  if (!user) {
+    throw new Error("Not found");
+  }
 
-    if(!user){
-        throw new Error("Not Found");   
-    }
-
-    return user;
-
-}
+  return user;
+};
 
 export const getSelfByUsername = async (username: string) => {
-    const self = await currentUser();
+  const self = await currentUser();
 
-    if(!self || !self.username){
-        throw new Error("Unauthorized");
-    }
+  if (!self || !self.username) {
+    throw new Error("Unauthorized");
+  }
 
-    const user = await db.user.findUnique({
-        where: {username}
-    });
-    
-    if(!user){
-        throw new Error("Not Found");
-    }
+  const user = await db.user.findUnique({
+    where: { username }
+  });
 
-    if(self.username !== user.username){
-        throw new Error("Unauthorized");
-    }
+  if (!user) {
+    throw new Error("User not found");
+  }
 
-    return self;
+  if (self.username !== user.username) {
+    throw new Error("Unauthorized");
+  }
+
+  return user;
 };
