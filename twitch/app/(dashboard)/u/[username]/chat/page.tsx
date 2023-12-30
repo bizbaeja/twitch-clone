@@ -15,7 +15,7 @@ const ChatPage = async () => {
     <div className="p-6">
       <div className="mb-4">
         <h1 className="text-2xl font-bold">
-            채팅 설정
+            ⚙️ 채팅 설정 
         </h1>
       </div>
       <div className="space-y-4">
