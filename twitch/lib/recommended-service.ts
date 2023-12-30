@@ -19,9 +19,8 @@ export const getRecommended = async () => {
 
     if (userId){
         users = await db.user.findMany({
-            orderBy:{
-                createdAt: "desc"
-            },
+          
+            
             where:{
                 AND:[
                     { NOT:{
@@ -63,11 +62,21 @@ export const getRecommended = async () => {
                 },
             
             }
+        ,  
+        include:{
+            stream: true,
+        },
+        orderBy:{
+            createdAt: "desc"
+        },
         })
     }else{
         
 
      users = await db.user.findMany({
+        include:{
+            stream: true,
+        },
         orderBy:{
             createdAt: "desc"
         },
