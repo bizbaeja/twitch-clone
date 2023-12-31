@@ -16,12 +16,25 @@ useEffect(() => {
       const viewerToken = await createViewerToken(hostIdentity);
       setToken(viewerToken);
 
-      const decodedToken = jwtDecode(viewerToken) as JwtPayload & { name?: string };
+      const decodedToken = jwtDecode(viewerToken) as JwtPayload & { name?: string }
+      const name = decodedToken?.name;
+    //jti: JWT의 고유 식별자로서, 주로 중복적인 처리를 방지하기 위하여 사용됩니다. 일회용 토큰에 사용하면 유용하다.
+      const identity = decodedToken.jti;
+
+      if (identity){
+        setIdentity(identity); 
+      }
+
+      if(name){
+        setName(name);
+      }
     } catch {
       toast.error("토큰을 생성할 수 없습니다.");
     }
-  };
+  }
 
+    createToken();
+}, [hostIdentity]);
 
-}, []);
+return { token, identity, name };
 };
