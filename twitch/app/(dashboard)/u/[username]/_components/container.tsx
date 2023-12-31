@@ -7,27 +7,33 @@ import { cn } from "@/lib/utils";
 import { useCreatorSidebar } from "@/store/use-creator-sidebar";
 
 interface ContainerProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 };
 
-export const Container = ({ children }: ContainerProps) => {
+export const Container = ({
+  children,
+}: ContainerProps) => {
+  const {
+    collapsed,
+    onCollapse,
+    onExpand,
+  } = useCreatorSidebar((state) => state);
+  const matches = useMediaQuery(`(max-width: 1024px)`);
+  
+  useEffect(() => {
+    if (matches) {
+      onCollapse();
+    } else {
+      onExpand();
+    }
+  }, [matches, onCollapse, onExpand]);
 
-    const { collapsed, onExpand, onCollapse } = useCreatorSidebar((state) => state);
-    const matches = useMediaQuery(`(min-width: 1024px)`);
-
-    useEffect(() => {
-
-        if (matches) {
-            onExpand();
-        } else {
-            onCollapse();
-        }
-    }, [matches, onExpand, onCollapse]);
-    return (
+  return (
     <div className={cn(
-        "flex=1",
-        collapsed ? "ml-[70px]" : "ml-[70px] lg:ml-60"
+      "flex-1",
+      collapsed ? "ml-[70px]" : "ml-[70px] lg:ml-60"
     )}>
-        {children}
-    </div>)
+      {children}
+    </div>
+  );
 };
