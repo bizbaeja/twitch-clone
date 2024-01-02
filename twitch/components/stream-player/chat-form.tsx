@@ -34,6 +34,8 @@ onSubmit,
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // 이벤트 버블링을 막는다.(이 폼이 다른 부모 요소를 갖고 있을 떄, 제풀 이벤트가 부모로 전파되지 않는다.)
+        // 폼이 제출되면, 보통 페이지가 다시 로드되기 때문이다. 
         e.stopPropagation();
         
         if(!value || isDisabled) return;
