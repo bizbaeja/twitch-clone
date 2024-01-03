@@ -45,27 +45,27 @@ export const Navigation = () => {
         ,
     ];
 
-    if(!user?.username){
-        return(
-            <ul className="space-y-2">
-                {[...Array(4)].map((_,i)=>(
-                    <NavItemSkeleton key={i}/>
-                ))}
-            </ul>
-        )
-    }
-
-    return (
-        <ul className="spacy-y-2 px-2 pt-4 lg:pt-0">
-            {routes.map((route)=>(
-                <NavItem 
-                key={route.href}
-                label={route.label}
-                icon={route.icon}
-                href={route.href}
-                isActive={pathname === route.href}
-                />
+    if (!user?.username) {
+        return (
+          <ul className="space-y-2">
+            {[...Array(4)].map((_, i) => (
+              <NavItemSkeleton key={i} />
             ))}
+          </ul>
+        );
+      }
+    
+      return (
+        <ul className="space-y-2 px-2 pt-4 lg:pt-0">
+         {routes.map((route) => (
+            <NavItem
+              key={route.href}
+              label={route.label}
+              icon={route.icon}
+              href={route.href}
+              isActive={pathname === route.href}
+            />
+         ))}
         </ul>
-    )
-};
+      );
+    };

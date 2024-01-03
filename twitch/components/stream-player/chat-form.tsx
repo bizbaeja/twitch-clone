@@ -67,7 +67,7 @@ onSubmit,
              value={value}
              disabled={isDisabled}
              placeholder="메시지를 입력하세요"
-             className={cn("border-white/10", isFollowersOnly && "rounded-t-none border-t-0")}
+             className={cn("border-white/10", isFollowersOnly || isDelayed &&"rounded-t-none border-t-0")}
             />
             </div>
             <div className="ml-auto">
