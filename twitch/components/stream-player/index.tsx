@@ -9,6 +9,7 @@ import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Header, HeaderSkeleton } from "./header";
+import { InfoCard } from "./info-card";
 
 interface StreamPlayerProps {
     user: User & { stream: Stream | null };
@@ -59,7 +60,12 @@ export const StreamPlayer = ({
                   isFollowing={isFollowing}
                   name={stream.name}
                 />
-               
+               <InfoCard
+               hostIdentity={user.id}
+               viewerIdentity={identity}
+               name={stream.name}
+               thumbnailUrl={stream.thumbnailUrl}
+               />
            </div>
            <div className={cn("col-span-1", collapsed && "hidden")}>
               <Chat

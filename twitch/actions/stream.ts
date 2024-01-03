@@ -24,6 +24,7 @@ export const updateStream = async (values: Partial<Stream>) => {
 
         // 업데이트할 유효한 데이터를 정의한다.
         const validData = {
+            thumbnailUrl : values.thumbnailUrl,
             name : values.name,
             isChatEnabled : values.isChatEnabled,
             isChatFollowersOnly : values.isChatFollowersOnly,
