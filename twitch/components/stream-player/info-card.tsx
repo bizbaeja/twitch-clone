@@ -28,8 +28,8 @@ export const InfoCard = ({
   return (
     <div className="px-4">
       <div className="rounded-xl bg-background">
-        <div className="flex space-around gap-x-2.5 p-4">
-          <div className="rounded-md bg-blue-600 p-2 h-auto w-auto">
+        <div className="flex flex-col justify-between gap-x-2.5 p-4">
+          <div className="flex items-center  rounded-md bg-blue-600 p-2 h-10 w-10" >
             <Pencil className="h-5 w-5" />
           </div>
           <div>
