@@ -7,7 +7,7 @@ import { VerifiedMark } from "../verified-mark";
 import { useParticipants, useRemoteParticipant } from "@livekit/components-react";
 import { Actions, ActionsSkeleton } from "./actions";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "../ui/button";
+
 
 interface HeaderProps {
     imageUrl: string;
@@ -45,11 +45,7 @@ if(!isLive){
     
 }
 },[setLiveHostIdentityInfo]);
-const onClick = (e:any) => {
-    e.preventDefault();
-    
-   alert(console.dir(setLiveHostIdentityInfo(liveHostIdentityInfo)))
-}
+
   return(
     <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
         <div className="flex items-center gap-x-3">
@@ -62,7 +58,7 @@ const onClick = (e:any) => {
              
             />
             
-            <Button  type="button" onClick={onClick}>눌러</Button>
+            
             <div className="space-y-1">
                 <div className="flex items-center gap-x-2">
                     <h2 className="text-lg font-semibold"> 

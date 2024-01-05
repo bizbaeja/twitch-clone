@@ -1,6 +1,6 @@
 "use client";
 
-import { Chat, ReceivedChatMessage } from "@livekit/components-react";
+import {  ReceivedChatMessage } from "@livekit/components-react";
 import { ChatMessage } from "./chat-message";
 import { Skeleton } from "../ui/skeleton";
 

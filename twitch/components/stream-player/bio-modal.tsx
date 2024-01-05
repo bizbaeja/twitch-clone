@@ -9,12 +9,10 @@ import {
 }
 from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button";
-import { Hint } from "@/components/hint";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useTransition, useRef, ElementRef, startTransition } from "react";
 import { updateUser } from "@/actions/user";
 import { toast } from "sonner";
-import { start } from "repl";
 
 
 interface BioModalProps {

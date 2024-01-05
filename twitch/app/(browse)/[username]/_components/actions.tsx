@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 // 고로, data 는 follow-service.ts 에서 정의된다.
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { toast } from "sonner"
-import { onUnBlock ,onBlock} from "@/actions/block";
+import { onBlock} from "@/actions/block";
 interface ActionsProps {
     isFollowing: boolean;
     userId : string;
