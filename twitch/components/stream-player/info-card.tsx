@@ -28,14 +28,14 @@ export const InfoCard = ({
   return (
     <div className="px-4">
       <div className="rounded-xl bg-background">
-        <div className="flex flex-col justify-between gap-x-2.5 p-4">
-          <div className="flex items-center  rounded-md bg-blue-600 p-2 h-10 w-10" >
+        <div className="flex  items-center gap-x-2.5 p-4">
+          <div className="flex rounded-md bg-blue-600 p-2 h-10 w-10" >
             <Pencil className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-sm lg:text-lg font-semibold capitalize">
+            <h3 className="text-sm lg:text-md font-semibold capitalize">
               스트림 정보 수정
-            </h2>
+            </h3>
             <p className="text-muted-foreground text-xs lg:text-sm">
                 스트림 정보를 수정할 수 있습니다.
             </p>

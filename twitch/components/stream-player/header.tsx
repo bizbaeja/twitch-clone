@@ -1,11 +1,13 @@
 "use client";
-
+import {useLiveHostIdentityInfo} from "@/store/use-live-hostidentity";
+import React, { useEffect, useState} from 'react';
 import { UserIcon } from "lucide-react";
 import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { VerifiedMark } from "../verified-mark";
 import { useParticipants, useRemoteParticipant } from "@livekit/components-react";
 import { Actions, ActionsSkeleton } from "./actions";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "../ui/button";
 
 interface HeaderProps {
     imageUrl: string;
@@ -32,7 +34,22 @@ const participantCount = participants.length - 1;
 
 const hostAsViewer = `host-${hostIdentity}`;
 const isHost = viewerIdentity === hostAsViewer;
+// hostIdentity 정보와 isLive 정보를 useLiveHostIdentity 훅으로 가져온다.
 
+const { liveHostIdentityInfo, setLiveHostIdentityInfo } = useLiveHostIdentityInfo();
+useEffect(() => {
+if(!isLive){
+    setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive : false });
+}else{
+    setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive: true });
+    
+}
+},[setLiveHostIdentityInfo]);
+const onClick = (e:any) => {
+    e.preventDefault();
+    
+   alert(console.dir(setLiveHostIdentityInfo(liveHostIdentityInfo)))
+}
   return(
     <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
         <div className="flex items-center gap-x-3">
@@ -41,14 +58,17 @@ const isHost = viewerIdentity === hostAsViewer;
                 username={hostName}
                 size="lg"
                 isLive={true}
-                showBadge
+                {...(isLive&&{showBadge:true, ringColor:"rose-500"})}
+             
             />
+            
+            <Button  type="button" onClick={onClick}>눌러</Button>
             <div className="space-y-1">
                 <div className="flex items-center gap-x-2">
                     <h2 className="text-lg font-semibold"> 
                         {hostName}
                     </h2>
-                    <VerifiedMark />
+                    {isLive&&<VerifiedMark />}
                 </div>
                 <p className="text-sm font-semibold">
                     {name}

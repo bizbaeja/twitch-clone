@@ -1,16 +1,24 @@
-import { LiveBadge } from "@/components/live-badge";
+
 import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
 import { Stream, User } from "@prisma/client";
+
 import Link from "next/link";
 
 interface ResultCardProps {
-    data: Stream & { user : User};
-};
+    data: {
+        user:User,
+        isLive: boolean;
+        name: string;
+        thumbnailUrl: string | null;
+   
+    }
+
+    }
 
 export const ResultCard = ({ data }: ResultCardProps) => {
-
+    
     return(
         <Link href={`/${data.user.username}`}>
         <div className="h-full w-full space-y-4 ">
@@ -19,12 +27,9 @@ export const ResultCard = ({ data }: ResultCardProps) => {
                 fallback={data.user.imageUrl}
                 isLive={data.isLive}
                 username={data.user.username}
+            
                 />
-                {data.isLive && (
-                    <div className="absolute top-2 left-2 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform">
-                        <LiveBadge />
-                    </div>
-                ) }
+                
                 <div className="flex gap-x-3 ">
                     <UserAvatar
                      username={data.user.username}
