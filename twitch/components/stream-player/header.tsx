@@ -1,5 +1,5 @@
 "use client";
-import {useLiveHostIdentityInfo} from "@/store/use-live-hostidentity";
+// import {useLiveHostIdentityInfo} from "@/store/use-live-hostidentity";
 import React, { useEffect, useState} from 'react';
 import { UserIcon } from "lucide-react";
 import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
@@ -36,15 +36,15 @@ const hostAsViewer = `host-${hostIdentity}`;
 const isHost = viewerIdentity === hostAsViewer;
 // hostIdentity 정보와 isLive 정보를 useLiveHostIdentity 훅으로 가져온다.
 
-const { liveHostIdentityInfo, setLiveHostIdentityInfo } = useLiveHostIdentityInfo();
-useEffect(() => {
-if(!isLive){
-    setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive : false });
-}else{
-    setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive: true });
+// const { liveHostIdentityInfo, setLiveHostIdentityInfo } = useLiveHostIdentityInfo();
+// useEffect(() => {
+// if(!isLive){
+//     setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive : false });
+// }else{
+//     setLiveHostIdentityInfo({ hostIdentity: liveHostIdentityInfo.hostIdentity, isLive: true });
     
-}
-},[setLiveHostIdentityInfo]);
+// }
+// },[setLiveHostIdentityInfo]);
 
   return(
     <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 items-start justify-between px-4">
