@@ -6,7 +6,7 @@ import { Logo } from "./_components/logo";
     }) => {
         return(
             <main className="h-full flex flex-col items-center justify-center space-y-6">
-                <div>
+                <div >
                 <Logo />
                 </div>
               <div>

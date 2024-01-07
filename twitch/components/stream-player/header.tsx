@@ -1,6 +1,6 @@
 "use client";
 // import {useLiveHostIdentityInfo} from "@/store/use-live-hostidentity";
-import React, { useEffect, useState} from 'react';
+
 import { UserIcon } from "lucide-react";
 import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { VerifiedMark } from "../verified-mark";

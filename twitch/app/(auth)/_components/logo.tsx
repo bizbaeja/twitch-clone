@@ -12,7 +12,7 @@ export const Logo = () =>{
         <div className='flex flex-col items-center gap-y-4'>
             <div className='bg-white rounded-full p-1'>
                 <Image
-                 src='/spooky.svg'
+                 src='/jam.svg'
                  width={80} 
                  height={80}
                 alt='Gaemehub'/>
@@ -22,10 +22,10 @@ export const Logo = () =>{
                     "text-xl font-semibold",
                     font.className
                 )}>
-                     Gamehub
+                    StreamJam
                 </p>
                 <p className={cn("text-sm text-muted-foreground",font.className)}>
-                    Let&apos;s Play
+                    스트리밍 서비스
                 </p>
             </div>
         </div>
