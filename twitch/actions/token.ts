@@ -17,7 +17,7 @@ export const createViewerToken = async (hostIdentity: string) => {
     const username = `guest#${Math.floor(Math.random() * 1000)}`;
     self = { id, username };
   }
-// 오타 수정
+
   const host = await getUserById(hostIdentity);
 
   if (!host) {
