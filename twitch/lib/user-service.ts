@@ -2,41 +2,40 @@ import { db } from './db';
 
 export const getUserByUsername = async (username: string) => {
     const user = await db.user.findUnique({
-        where:{
+        where: {
             username,
-        }
-        ,
-        select:{
-            id:true,
-            externalUserId:true,
-            username:true,
-            bio:true,
-            imageUrl:true,
+        },
+        select: {
+            id: true,
+            externalUserId: true,
+            username: true,
+            bio: true,
+            imageUrl: true,  // 쉼표 추가
             stream: {
-                select:{
-                    id:true,
-                    isLive:true,
-                    isChatDelayed:true,
-                    isChatEnabled:true,
-                    isChatFollowersOnly:true,
-                    thumbnailUrl:true,
-                    name:true,
+                select: {
+                    id: true,
+                    isLive: true,
+                    isChatDelayed: true,
+                    isChatEnabled: true,
+                    isChatFollowersOnly: true,
+                    thumbnailUrl: true,
+                    name: true,
                 },
             },
-            _count:{
-                select:{
-                    followedBy:true,
-                }
-            }
-        }
+            _count: {
+                select: {
+                    followedBy: true,
+                },
+            },
+        },
     });
     return user;
 }
-// 오타 수정
+
 export const getUserById = async (id: string) => {
     const user = await db.user.findUnique({
-        where:{id},
-        include:{
+        where: { id },
+        include: {
             stream: true,
         },
     });
