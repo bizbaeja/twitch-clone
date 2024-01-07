@@ -3,8 +3,6 @@ import { UserAvatar } from "@/components/user-avatar";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import { LiveBadge } from "@/components/live-badge";
-import {useLiveHostIdentityInfo}
-from "@/store/use-live-hostidentity";
 
 interface ThumbnailProps {
     src: string | null;
@@ -21,8 +19,7 @@ export const Thumbnail = ({
     username,
 }:ThumbnailProps) => {
     
-    const {liveHostIdentityInfo} = useLiveHostIdentityInfo();
-    console.log(liveHostIdentityInfo)
+
     let content;
     
     if(!src){

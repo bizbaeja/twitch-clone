@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -28,6 +28,7 @@
     "@uploadthing/react": "^6.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "cross-env": "^7.0.3",
     "date-fns": "^3.0.6",
     "jwt-decode": "^4.0.0",
     "livekit-client": "^1.15.5",
