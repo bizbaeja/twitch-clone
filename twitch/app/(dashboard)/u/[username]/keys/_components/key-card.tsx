@@ -20,7 +20,7 @@ export const KeyCard = ({
     <div className="rounded-xl bg-muted p-6">
       <div className="flex items-start gap-x-10">
         <p className="font-semibold shrink-0">
-          Stream Key
+          스트림 키
         </p>
         <div className="space-y-2 w-full">
           <div className="w-full flex items-center gap-x-2">
@@ -28,7 +28,7 @@ export const KeyCard = ({
               value={value || ""}
               type={show ? "text" : "password"}
               disabled
-              placeholder="Stream key"
+              placeholder="스트림 키"
             />
             <CopyButton value={value || ""} />
           </div>
