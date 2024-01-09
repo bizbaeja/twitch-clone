@@ -23,8 +23,8 @@ export const Logo = () =>{
             <div className={cn(
                 "hidden lg:block",
                 font.className)}>
-                <p className='text-lg font-semibold'>Gamehub</p>
-                <p className='text-xs text-muted-foreground'>크리에이터 대시보드</p>
+                <p className='text-lg font-semibold'>StreamJam</p>
+                <p className='text-xs text-muted-foreground'>스트리밍 웹서비스</p>
             </div>
         </div>
       </Link>
