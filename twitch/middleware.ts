@@ -11,7 +11,7 @@ export default authMiddleware({
       "/:username",
       "/search"
     ]
-
+,debug:true
 });
  
 export const config = {
