@@ -11,11 +11,7 @@ export const Logo = () =>{
     return (
         <div className='flex flex-col items-center gap-y-4'>
             <div className='bg-white rounded-full p-1'>
-                <Image
-                 src='/jam.svg'
-                 width={80} 
-                 height={80}
-                alt='Gaemehub'/>
+            
             </div>
             <div className='flex flex-col items-center'>
                 <p className={cn(
