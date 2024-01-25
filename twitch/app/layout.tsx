@@ -6,11 +6,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from "sonner";
-import Image from 'next/image';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  icons: "./jam.svg",
   title: 'SreamJam',
   description: '스트리밍 웹서비스',
 }
