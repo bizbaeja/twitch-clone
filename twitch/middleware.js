@@ -14,7 +14,8 @@ exports.default = (0, nextjs_1.authMiddleware)({
         "/api/webhooks(.*)",
         "/api/uploadthing",
         "/:username",
-        "/search"
+        "/search",
+        "/u/[username]"
     ],
     debug: true
 });

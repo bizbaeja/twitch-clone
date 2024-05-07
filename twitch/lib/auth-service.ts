@@ -21,9 +21,10 @@ export const getSelf = async () => {
 };
 
 export const getSelfByUsername = async (username: string) => {
+  console.log("before getSelfByUsername",username);
   const self = await currentUser();
-
-  if (!self || !self.username) {
+ console.log("after getSelfByUsername",self);
+  if (!self || !self.username)  {
     throw new Error("Unauthorized");
   }
 

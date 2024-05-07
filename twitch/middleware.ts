@@ -9,7 +9,8 @@ export default authMiddleware({
     "/api/webhooks(.*)",
     "/api/uploadthing",
     "/:username",
-    "/search"
+    "/search",
+    "/u/[username]"
   ]
 ,debug:true
 });
